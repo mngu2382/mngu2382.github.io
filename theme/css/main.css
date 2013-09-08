@@ -1,0 +1,227 @@
+/*
+	Name: Smashing HTML5
+	Date: July 2009
+	Description: Sample layout for HTML5 and CSS3 goodness.
+	Version: 1.0
+	License: MIT <http://opensource.org/licenses/MIT>
+	Licensed by: Smashing Media GmbH <http://www.smashingmagazine.com/>
+	Original author: Enrique Ramírez <http://enrique-ramirez.com/>
+*/
+
+/* Imports */
+@import url("reset.css");
+@import url("pygment.css");
+/*
+@import url("typogrify.css");
+@import url(//fonts.googleapis.com/css?family=Yanone+Kaffeesatz&subset=latin);
+*/
+
+/* Body */
+body {
+    background: #f5f4f3;
+    color: #000;
+    font-size: 90%; /* Base font size: 14px */
+    font-family: "helvetica neue",calibri,arial,sans-serif;
+    line-height: 1.5;
+    max-width: 660px;
+    min-width: 300px;
+    margin: 0 auto;
+    padding: 0 10px;
+    text-align: left;
+}
+
+/* Headings */
+h1 {font-size: 2em }
+h2 {font-size: 1.571em}	/* 22px */
+h3 {font-size: 1.429em}	/* 20px */
+h4 {font-size: 1.286em}	/* 18px */
+h5 {font-size: 1.143em}	/* 16px */
+h6 {font-size: 1em}     /* 14px */
+
+h1, h2, h3, h4, h5, h6 {
+    color:#d32;
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 1.5em 0 .5em 0;
+}
+
+section, article, aside, footer, header, nav, hgroup {
+  display: block;
+}
+
+section, aside {
+	background: #fff;
+	margin-bottom: 1em;
+	overflow: hidden;
+	padding: 10px 15px;
+}
+
+strong {
+    font-weight: bold;
+}
+em {
+    font-style: italic;
+}
+
+#banner h1 {
+    font-family: serif;
+    font-size: 3.571em;
+    margin: 0;
+    white-space: nowrap;
+}
+
+#banner h1 a:link, #banner h1 a:visited {
+	color: #111;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#banner h1 a:hover, #banner h1 a:active {
+	color: #d32;
+}
+
+#banner h1 strong {
+    font-size: 0.36em;
+    font-weight: normal;
+}
+
+#banner nav {
+	background: #111;
+    clear:both;
+	font-size: 1.143em;
+	height: 40px;
+	line-height: 30px;
+	margin-bottom: 1em;
+	text-align: center;
+}
+
+#banner nav ul {
+    list-style: none;
+    margin: 0 auto;
+    width: 680px;
+}
+
+#banner nav li {
+    float: left;
+    display: inline;
+    margin: 0;
+}
+
+#banner nav a:link, #banner nav a:visited {
+	color: #fff;
+	display: inline-block;
+	height: 30px;
+	padding: 5px 1.5em;
+	text-decoration: none;
+}
+
+#banner nav a:hover, #banner nav a:active,
+#banner nav .active a:link, #banner nav .active a:visited {
+	background: #d32;
+	color: #fff;
+	text-shadow: none !important;
+}
+
+footer, .post-info {
+    font-size: 0.8em;
+    color: #333;
+    text-align: right;
+}
+
+.hentry {
+	display: block;
+	clear: both;
+	border-bottom: 1px solid #ccc;
+	padding: 1.5em 0 1.1em 0;
+}
+
+.entry-title {
+    float: left;
+    width: 0.7;
+    margin-left: -.1em;
+}
+.post-info {
+    float: right;
+    width: 0.3;
+}
+
+.entry-content {
+    clear: both;
+}
+
+/* Quotes */
+blockquote {
+    margin: 0 60px;
+    color: #333;
+    font-size: .95em;
+    font-style: italic;   
+}
+
+p {
+    margin-bottom: .8em;
+}
+
+a {
+    outline: 10px;
+    color: #d32;
+    text-decoration: none;
+}
+
+a:link, a:visited {
+    padding: 0 1px;
+}
+
+a:visited {
+    color: #b76;
+}
+
+a:hover, a:active {
+    text-decoration: underline;
+}
+
+code, pre {
+    font-family: Inconsolata,Menlo,Monaco,Consolas,"Courier New",monospace;
+    color: #222;
+    background-color: #fbfbfb;
+    border: 1px solid #ccc;
+    font-size: 0.9em;
+    padding: 2px 4px;
+}
+
+code {
+    white-space: nowrap;
+}
+
+pre {
+    display: block;
+    margin: 2px 0 10px;
+    overflow:auto;
+    white-space: pre;
+}
+
+pre.prettyprint {
+    margin-bottom: 20px;
+}
+
+pre code {
+    padding: 0;
+    color: inherit;
+    white-space: pre;
+    background-color: transparent;
+    border: 0;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
+
+.articlePager {
+    color: #d32;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
