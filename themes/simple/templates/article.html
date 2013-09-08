@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+{% if article.mathjax %}
+  {% include 'mathjax.html' %}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<section id="content" class="body">
+{% include 'articlePager.html' %}
+  <header>
+    <h2 class="entry-title">{{ article.title }}</h2>
+    {% import 'translations.html' as translations with context %}
+    {{ translations.translations_for(article) }}
+  </header>
+  <footer class="post-info">
+    <abbr class="published" title="{{ article.date.isoformat() }}">
+      {{ article.locale_date }}
+    </abbr>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    {{ article.content }}
+  </div><!-- /.entry-content -->
+  <footer>
+  {% if article.modified %}
+    Last modified: {{ article.modified }}
+  {% endif %}
+  </footer> 
+</section>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section id="content" class="body">
+{% for article in dates %}
+  <article class="hentry">
+    <section class="entry-title">
+      <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">[{{ article.category }}] {{ article.title }}</a>
+    </section>
+    <aside class="post-info">
+      <abbr class="published" title="{{ article.date.isoformat() }}"> {{ article.locale_date }} </abbr>
+    </aside><!-- /.post-info -->
+  </article>
+{% endfor %}
+</section>
+{% endblock %}

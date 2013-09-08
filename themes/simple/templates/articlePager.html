@@ -1,0 +1,33 @@
+{% if article.category != "misc"%}
+
+{% set pageNum = [] %}
+{% for a in articles|sort(attribute='slug') if a.category==article.category %}
+  {% if a.title==article.title %}
+    {% do pageNum.append(loop.index) %}
+    {% if loop.last %}
+    {% do pageNum.append(loop.length) %}
+    {% else %}
+    {% do pageNum.append(loop.length + 1) %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+<div class="articlePager">
+  {% for a in articles|sort(attribute='slug') if a.category==article.category %}
+    {% if loop.index==pageNum[0]-1 %}
+    <a href="{{ SITEURL }}/{{ a.url }}">&laquo;</a>
+    {% elif loop.first %}
+    <p style="display:inline;visibility:hidden">&laquo;</p>
+    {% endif %}
+    {% if a.title==article.title %}
+    <a href="{{ SITEURL }}/categories.html#{{ article.categories }}">{{ article.category }} {{ loop.index }}/{{ pageNum[1] }}</a>
+    {% endif %}
+    {% if loop.index==pageNum[0]+1 %}
+    <a href="{{ SITEURL }}/{{ a.url }}">&raquo;</a>
+    {% elif loop.last %}
+    <p style="display:inline;visibility:hidden">&raquo;</p>
+    {% endif %}
+    {% endfor %}
+</div>
+
+{% endif %}

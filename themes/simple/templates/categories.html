@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% set cat = [] %}
+{% for article in articles if article.category != "misc" %}
+  {% if article.category not in cat %}
+    {% do cat.append(article.category) %}
+  {% endif %}
+{% endfor %}
+
+{% block content %}
+<section id="content" class="body">
+  {% for c in cat %}
+  <h3>{{ c }}</h3><a id={{ c }}></a>
+  <ul>
+    {% for article in articles|sort(attribute='slug') if article.category == c %}
+      <li><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+        title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></li>
+  {% endfor %}
+  </ul> 
+  {% endfor %}
+  <h3>misc</h3><a id="misc"></a>
+  <ul>
+    {% for article in articles | sort if article.category == "misc" %}
+      <li><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+        title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}
