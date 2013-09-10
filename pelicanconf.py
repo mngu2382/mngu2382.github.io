@@ -38,6 +38,8 @@ PAGE_SAVE_AS = u'pages/{slug}.html'
 AUTHOR_SAVE_AS = False
 CATEGORY_SAVE_AS = False
 
+FILES_TO_COPY = (('tmp.ico', 'tmp.ico'), )
+
 STATIC_PATHS = ['images']
 
 JINJA_EXTENSIONS = ['jinja2.ext.do']

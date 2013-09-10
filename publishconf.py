@@ -36,6 +36,8 @@ PAGE_DIR = u'pages'
 PAGE_URL = u'pages/{slug}.html'
 PAGE_SAVE_AS = u'pages/{slug}.html'
 
+FILES_TO_COPY = (('tmp.ico', 'tmp.ico'), )
+
 JINJA_EXTENSIONS = ['jinja2.ext.do']
 
 # Custom variables
