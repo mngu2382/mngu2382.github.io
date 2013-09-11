@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>:testSite</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="/theme/css/main.css"/>
+  <link rel="icon" type="image/png" href="/tmp.ico"/>
+
+</head>
+
+<body>
+<header id="banner">
+  <h1><a href="/index.html">:testSite <strong>a work in progress</strong></a></h1>
+  <nav><ul>
+                      <li><a href="/pages/about.html">About</a></li>
+              <li><a href="/pages/gh-pages.html">gh-pages</a></li>
+            </ul></nav><!-- /#menu -->
+</header><!-- /#banner -->
+
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">Notes: the `sp` package</h2>
+        
+  </header>
+  <footer class="post-info">
+    <abbr class="published" title="2013-09-10T00:00:00">
+      Tue 10 September 2013
+    </abbr>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>Original article <a href="TODO">here</a>.</p>
+<h2>1 Introduction</h2>
+<p>Spatial data structures implemented include points, lines, polygons
+and grids; each with and without attribute data. S4 classes and
+methods style.</p>
+<h2>2 Spatial data classes</h2>
+<p>The <code>sp</code> package provides class for spatial-only information (e.g.
+<code>SpatialPoints</code>) and extensions which include the data attributes for
+the spatial entities (e.g. <code>SpatialPointsDataFrame</code>). Available
+classes:</p>
+<table>
+<thead>
+  <tr>
+    <th>Data Type</th>
+    <th>Class</th>
+    <th>Contains</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>points</td>
+    <td><code>SpatialPoints</code></td>
+    <td><code>Spatial</code></td>
+  </tr>
+  <tr>
+    <td>points</td>
+    <td><code>SpatialPointsDataFrame</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>pixels</td>
+    <td><code>SpatialPixels</code></td>
+    <td><code>SpatialPoints</code></td>
+  </tr>
+  <tr>
+    <td>pixels</td>
+    <td><code>SpatialPixelsDataFrame</code></td>
+    <td><code>SpatialPointsDataFrame</code></td>
+  </tr>
+  <tr>
+    <td>full grid</td>
+    <td><code>SpatialGrid</code></td>
+    <td><code>SpatialPixels</code></td>
+  </tr>
+  <tr>
+    <td>full grid</td>
+    <td><code>SpatialGridDataFrame</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>line</td>
+    <td><code>Line</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>lines</td>
+    <td><code>Lines</code></td>
+    <td><code>Line</code> list</td>
+  </tr>
+  <tr>
+    <td>lines</td>
+    <td><code>SpatialLines</code></td>
+    <td><code>Spatial</code>, <code>Lines</code> list</td>
+  </tr>
+  <tr>
+    <td>lines</td>
+    <td><code>SpatialLinesDataFrame</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>ring</td>
+    <td><code>Polygon</code></td>
+    <td><code>Line</code></td>
+  </tr>
+  <tr>
+    <td>rings</td>
+    <td><code>Polygons</code></td>
+    <td><code>Polygon</code> list</td>
+  </tr>
+  <tr>
+    <td>rings</td>
+    <td><code>SpatialPolygons</code></td>
+    <td><code>Spatial</code>, <code>Polygons</code> list</td>
+  </tr>
+  <tr>
+    <td>rings</td>
+    <td><code>SpatialPolygonsDataFrame</code></td>
+    <td></td>
+  </tr>
+</tbody>
+</table>
+
+<p>Note that <code>Spatial*DataFrame</code> always contains <code>Spatial*</code>.</p>
+<h3>2.1 Spatial</h3>
+<p>The foundational class <code>Spatial</code> has two slots. The first <code>bbox</code>, is
+the bounding box, a matrix of numerical cordinates with column names
+<code>c(min, max)</code> and at least two rows (easting and northings). Often the
+bounding box in generated automatically from data in subclasses of
+<code>Spatial</code>.</p>
+<p>The second, <code>proj4string</code>, is a <code>CRS</code> class object defining the
+corodinate reference system. The <code>CRS</code> class in turn, has a single
+character string slot, <code>projargs</code>,  which is the projection in
+PROJ.4-format. The default value is <code>as.character(NA)</code>.</p>
+<p>The slots can be access using the <code>bbox</code> and <code>proj4string</code> methods.</p>
+<p>Operations on <code>Spatial*</code> objects update or copy these values to the
+new `Spatial* object being created.</p>
+<h3>2.2 Spatial points</h3>
+<p>The <code>SpatialPoints</code> class extends the <code>Spatial</code> class by adding a
+<code>coords</code> slot, into which a matrix of point coorinates can be inserted.
+<code>SpatialPoints</code> objects may have more than two dimensions, but plot
+methods for the class use only the first two.</p>
+<h4>2.2.1 Methods</h4>
+<p>The following methods access the two slots that in <code>Spatial</code> objects:
+<code>bbox</code> returns the bounding box; and <code>proj4string</code> returns the
+projection string contained as a <code>CRS</code> object .</p>
+  </div><!-- /.entry-content -->
+  <footer>
+    </footer> 
+</section>
+
+<footer class="body">
+  Hosted on <a href="http://github.com/">GitHub</a>, powered by
+  <a href="http://getpelican.com/">Pelican</a>.
+</footer>
+
+</body>
+</html>
