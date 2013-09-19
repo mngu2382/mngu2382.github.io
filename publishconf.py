@@ -13,7 +13,7 @@ from pelicanconf import *
 AUTHOR = u'm'
 SITENAME = u':testSite'
 SITESUBTITLE = u'a work in progress'
-SITEURL = u'http://mngu2381.github.io'
+SITEURL = u'http://mngu2382.github.io'
 TIMEZONE = u'Australia/Sydney'
 DEFAULT_LANG = u'en'
 
