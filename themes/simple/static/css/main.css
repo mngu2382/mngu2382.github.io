@@ -242,6 +242,13 @@ ul {
     list-style-type: disc;
 }
 
+blockquote {
+    margin: 0 60px;
+    color: #333;
+    font-size: .95em;
+    font-style: italic;   
+}
+
 .articlePager {
     color: #d32;
     text-align: center;

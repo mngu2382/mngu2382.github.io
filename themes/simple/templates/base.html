@@ -5,7 +5,7 @@
   <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/main.css"/>
-  <link rel="icon" type="image/png" href="{{ SITEURL }}/tmp.ico"/>
+  <link rel="icon" type="image/x-icon" href="{{ SITEURL }}/favicon.ico"/>
 {% endblock head %}
 </head>
 
@@ -16,17 +16,6 @@
     {% for title, link in MENUITEMS %}
       <li><a href="{{ link }}">{{ title }}</a></li>
     {% endfor %}
-    {% if DISPLAY_PAGES_ON_MENU %}
-      {% for p in PAGES %}
-        <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
-      {% endfor %}
-    {% else %}
-      {% if DISPLAY_CATEGORIES_ON_MENU %}
-        {% for cat, null in categories %}
-          <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
-        {% endfor %}
-      {% endif %}
-    {% endif %}
   </ul></nav><!-- /#menu -->
 </header><!-- /#banner -->
 

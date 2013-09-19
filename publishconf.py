@@ -10,8 +10,12 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = 'http://mngu2382.github.io'
-RELATIVE_URLS = False
+AUTHOR = u'm'
+SITENAME = u':testSite'
+SITESUBTITLE = u'a work in progress'
+SITEURL = u'http://mngu2381.github.io'
+TIMEZONE = u'Australia/Sydney'
+DEFAULT_LANG = u'en'
 
 FEED_ALL_ATOM = None #'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = None #'feeds/%s.atom.xml'
@@ -20,13 +24,15 @@ DELETE_OUTPUT_DIRECTORY = False
 
 DEFAULT_PAGINATION = 10
 
+RELATIVE_URLS = False
+
 THEME = u'themes/simple'
 CSS_FILE = u'themes/simple/static/css/main.css'
 
-DIRECT_TEMPLATES = ('index',)
+DIRECT_TEMPLATES = (u'index',)
 INDEX_SAVE_AS = u'index.html'
 
-STATIC_PATHS = ['images']
+STATIC_PATHS = [u'images']
 
 ARTICLE_DIR = u'posts'
 ARTICLE_URL = u'posts/{slug}.html'
@@ -36,13 +42,19 @@ PAGE_DIR = u'pages'
 PAGE_URL = u'pages/{slug}.html'
 PAGE_SAVE_AS = u'pages/{slug}.html'
 
-FILES_TO_COPY = (('tmp.ico', 'tmp.ico'), )
+MENUITEMS = [(u'gh-pages', u'/pages/gh-pages.html'),
+             (u'About', u'/pages/about.html')]
 
-JINJA_EXTENSIONS = ['jinja2.ext.do']
+AUTHOR_SAVE_AS = False
+CATEGORY_SAVE_AS = False
+
+FILES_TO_COPY = ((u'favicon.ico', u'favicon.ico'), )
+
+JINJA_EXTENSIONS = [u'jinja2.ext.do']
 
 # Custom variables
 MATHJAX_URL = u'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
-# Following items are often useful when publishing
 
+# Following items are often useful when publishing
 #DISQUS_SITENAME = ""
 #GOOGLE_ANALYTICS = ""

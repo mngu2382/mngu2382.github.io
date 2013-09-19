@@ -1,16 +1,11 @@
 {% extends "base.html" %}
 
-{% block head %}
-{{ super() }}
-{% include 'mathjax.html' %}
-{% endblock %}
-
 {% block content %}
 <section id="content">
 {% block content_title %}
 {% endblock %}
 
-{% for article in articles_page.object_list if article.front %}
+{% for article in articles_page.object_list if not article.hide %}
   <article class="hentry">
     <section class="entry-title">
       <h2><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{% if article.category != "misc" %}[{{ article.category }}] {% endif %}{{ article.title }}</a></h2>

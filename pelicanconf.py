@@ -5,10 +5,8 @@ from __future__ import unicode_literals
 AUTHOR = u'm'
 SITENAME = u':testSite'
 SITESUBTITLE = u'a work in progress'
-#SITEURL = u''
-
+SITEURL = u'/'
 TIMEZONE = u'Australia/Sydney'
-
 DEFAULT_LANG = u'en'
 
 # Feed generation is usually not desired when developing
@@ -24,8 +22,10 @@ DEFAULT_PAGINATION = 10
 THEME = u'themes/simple'
 CSS_FILE = u'themes/simple/static/css/main.css'
 
-DIRECT_TEMPLATES = ('index',)
+DIRECT_TEMPLATES = (u'index',)
 INDEX_SAVE_AS = u'index.html'
+
+STATIC_PATHS = [u'images']
 
 ARTICLE_DIR = u'posts'
 ARTICLE_URL = u'posts/{slug}.html'
@@ -35,14 +35,15 @@ PAGE_DIR = u'pages'
 PAGE_URL = u'pages/{slug}.html'
 PAGE_SAVE_AS = u'pages/{slug}.html'
 
+MENUITEMS = [(u'gh-pages', u'/pages/gh-pages.html'),
+             (u'About', u'/pages/about.html')]
+
 AUTHOR_SAVE_AS = False
 CATEGORY_SAVE_AS = False
 
-FILES_TO_COPY = (('tmp.ico', 'tmp.ico'), )
+FILES_TO_COPY = ((u'favicon.ico', u'favicon.ico'), )
 
-STATIC_PATHS = ['images']
-
-JINJA_EXTENSIONS = ['jinja2.ext.do']
+JINJA_EXTENSIONS = [u'jinja2.ext.do']
 
 # Custom variables
 MATHJAX_URL = u'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
