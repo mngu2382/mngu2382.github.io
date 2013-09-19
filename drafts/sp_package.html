@@ -3,23 +3,23 @@
 <head>
   <title>:testSite</title>
   <meta charset="utf-8" />
-  <link rel="stylesheet" type="text/css" href="http://mngu2382.github.io/theme/css/main.css"/>
-  <link rel="icon" type="image/png" href="http://mngu2382.github.io/tmp.ico"/>
+  <link rel="stylesheet" type="text/css" href="http://mngu2381.github.io/theme/css/main.css"/>
+  <link rel="icon" type="image/x-icon" href="http://mngu2381.github.io/favicon.ico"/>
 
 </head>
 
 <body>
 <header id="banner">
-  <h1><a href="http://mngu2382.github.io/index.html">:testSite <strong>a work in progress</strong></a></h1>
+  <h1><a href="http://mngu2381.github.io/index.html">:testSite <strong>a work in progress</strong></a></h1>
   <nav><ul>
-                      <li><a href="http://mngu2382.github.io/pages/about.html">About</a></li>
-              <li><a href="http://mngu2382.github.io/pages/gh-pages.html">gh-pages</a></li>
-            </ul></nav><!-- /#menu -->
+          <li><a href="/pages/gh-pages.html">gh-pages</a></li>
+          <li><a href="/pages/about.html">About</a></li>
+      </ul></nav><!-- /#menu -->
 </header><!-- /#banner -->
 
 <section id="content" class="body">
   <header>
-    <h2 class="entry-title">Notes: the `sp` package</h2>
+    <h2 class="entry-title">Spatial data classes for R and the `sp` package</h2>
         
   </header>
   <footer class="post-info">
@@ -28,13 +28,14 @@
     </abbr>
   </footer><!-- /.post-info -->
   <div class="entry-content">
-    <p>Original article <a href="TODO">here</a>.</p>
+    <p>Notes I made when I wanted to plot a shapefile to make a map of the
+northern suburbs of Canberra (<a href="/TODO">here</a>).</p>
 <h2>1 Introduction</h2>
 <p>Spatial data structures implemented include points, lines, polygons
 and grids; each with and without attribute data. S4 classes and
 methods style.</p>
 <h2>2 Spatial data classes</h2>
-<p>The <code>sp</code> package provides class for spatial-only information (e.g.
+<p>The <code>sp</code> package provides classes for spatial-only information (e.g.
 <code>SpatialPoints</code>) and extensions which include the data attributes for
 the spatial entities (e.g. <code>SpatialPointsDataFrame</code>). Available
 classes:</p>
@@ -123,26 +124,70 @@ classes:</p>
 <p>Note that <code>Spatial*DataFrame</code> always contains <code>Spatial*</code>.</p>
 <h3>2.1 Spatial</h3>
 <p>The foundational class <code>Spatial</code> has two slots. The first <code>bbox</code>, is
-the bounding box, a matrix of numerical cordinates with column names
-<code>c(min, max)</code> and at least two rows (easting and northings). Often the
+the bounding box, a matrix of numerical coordinates with column names
+<code>c(min, max)</code> and at least two rows (easting and northing). Often the
 bounding box in generated automatically from data in subclasses of
 <code>Spatial</code>.</p>
 <p>The second, <code>proj4string</code>, is a <code>CRS</code> class object defining the
-corodinate reference system. The <code>CRS</code> class in turn, has a single
+coordinate reference system. The <code>CRS</code> class in turn, has a single
 character string slot, <code>projargs</code>,  which is the projection in
 PROJ.4-format. The default value is <code>as.character(NA)</code>.</p>
 <p>The slots can be access using the <code>bbox</code> and <code>proj4string</code> methods.</p>
 <p>Operations on <code>Spatial*</code> objects update or copy these values to the
-new `Spatial* object being created.</p>
+new <code>Spatial*</code> object being created.</p>
+<div class="highlight"><pre>getClass<span class="p">(</span><span class="s">&quot;Spatial&quot;</span><span class="p">)</span>
+<span class="c1"># Slots:</span>
+<span class="c1">#                               </span>
+<span class="c1"># Name:         bbox proj4string</span>
+<span class="c1"># Class:      matrix         CRS</span>
+</pre></div>
+
+
 <h3>2.2 Spatial points</h3>
 <p>The <code>SpatialPoints</code> class extends the <code>Spatial</code> class by adding a
-<code>coords</code> slot, into which a matrix of point coorinates can be inserted.</p>
+<code>coords</code> slot, into which a matrix of point coordinates can be inserted.
+This can be accessed by the <code>cooordinates</code> method.</p>
 <p><code>SpatialPoints</code> objects may have more than two dimensions, but plot
 methods for the class use only the first two.</p>
-<h4>2.2.1 Methods</h4>
-<p>The following methods access the two slots that in <code>Spatial</code> objects:
-<code>bbox</code> returns the bounding box; and <code>proj4string</code> returns the
-projection string contained as a <code>CRS</code> object .</p>
+<p>The class <code>SpatialPointsDataFrame</code> extends <code>SpatialPoints</code> to include
+attribute data, where each spatial entity (in this case, a point), is
+linked to a row in a data frame. The data frame is stored in the slot
+<code>data</code>.</p>
+<p>The <code>Spatial*DataFrame</code> classes have been designed to behave like
+data frames and work with standard methods like <code>[</code>, <code>names</code> and
+<code>model.frame</code> which act on the <code>data</code> slot.</p>
+<div class="highlight"><pre>getClass<span class="p">(</span><span class="s">&quot;SpatialPoints&quot;</span><span class="p">)</span>
+<span class="c1"># Slots:</span>
+<span class="c1">#                                           </span>
+<span class="c1"># Name:       coords        bbox proj4string</span>
+<span class="c1"># Class:      matrix      matrix         CRS</span>
+
+getClass<span class="p">(</span><span class="s">&quot;SpatialPointsDataFrame&quot;</span><span class="p">)</span>
+<span class="c1"># Slots:</span>
+<span class="c1">#                                                                   </span>
+<span class="c1"># Name:         data  coords.nrs      coords        bbox proj4string</span>
+<span class="c1"># Class:  data.frame     numeric      matrix      matrix         CRS</span>
+</pre></div>
+
+
+<h3>2.3 Spatial lines</h3>
+<p>Lines in R are represented as a sequence of points, based on
+lowering the graphic "pen" at the first point and drawing to the
+successive points until an <code>NA</code> is met. Then the pen is raise and
+moved to the next non-<code>NA</code> value, where it is lowered, and so on until
+the end of the sequence.</p>
+<p><code>Lines</code> in <code>sp</code> are different: starting with a <code>Line</code> object which is
+represented as a matrix of 2D coordinates, without <code>NA</code> values. A list
+of <code>Line</code> objects fills the <code>Lines</code> slot in a <code>Lines</code> object. The only
+other slot in <code>Lines</code> is <code>ID</code>, a single identifying character string,
+that will be used in the construction of <code>SpatialLines</code>.</p>
+<p><code>Line</code> and <code>Lines</code> do not inherit from the <code>Spatial</code> class, rather it
+is <code>SpatialLines</code> which inherits from both <code>Lines</code> and <code>Spatial</code>.</p>
+<h2>Reference</h2>
+<p>Pebesma, E.J. and Bivand, R.S., 2005,
+<a href="http://cran.r-project.org/web/packages/sp/index.html">S Classes and Methods for Spatial Data: the <code>sp</code> Package</a></p>
+<p>Bivand, R.S, Pebesma, E.J. and Gomez-Rubio, V., 2008,
+<a href="http://www.asdar-book.org">Applied Spatial Data Analysis with R</a></p>
   </div><!-- /.entry-content -->
   <footer>
     </footer> 

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>:testSite</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="http://mngu2381.github.io/theme/css/main.css"/>
+  <link rel="icon" type="image/x-icon" href="http://mngu2381.github.io/favicon.ico"/>
+
+</head>
+
+<body>
+<header id="banner">
+  <h1><a href="http://mngu2381.github.io/index.html">:testSite <strong>a work in progress</strong></a></h1>
+  <nav><ul>
+          <li><a href="/pages/gh-pages.html">gh-pages</a></li>
+          <li><a href="/pages/about.html">About</a></li>
+      </ul></nav><!-- /#menu -->
+</header><!-- /#banner -->
+
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">Publishing my Pelican site to GitHub</h2>
+        
+  </header>
+  <footer class="post-info">
+    <abbr class="published" title="2013-09-19T00:00:00">
+      Thu 19 September 2013
+    </abbr>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>The suggested method in the
+<a href="http://docs.getpelican.com/en/latest/tips.html#publishing-to-github">documentation</a>
+for publishing Pelican sites to GitHub is through the
+<a href="https://github.com/davisp/ghp-import">ghp-import</a> package. But since
+I'm ever stingy with the number of packages that I install, I use a
+simple work-around.</p>
+<p>We can push the Pelican output directory to the master branch for
+our user or organisation page, or the gh-pages branch for our
+projects. We just need to make sure that every time we clean out the
+output directory (i.e. every time we run <code>make clean</code>, <code>make html</code> or
+<code>make regenerate</code>) the git directory is not removed as well.</p>
+<p>We achieve this by modifying the <code>clean</code> target in the Makefile. The
+<code>diff</code>:</p>
+<div class="highlight"><pre>50c50
+&lt;       <span class="o">[</span> ! -d <span class="k">$(</span>OUTPUTDIR<span class="k">)</span> <span class="o">]</span> <span class="o">||</span> find <span class="k">$(</span>OUTPUTDIR<span class="k">)</span> -mindepth 1 -maxdepth 1 -wholename <span class="k">$(</span>OUTPUTDIR<span class="k">)</span>/.git -o -exec rm -r <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
+---
+&gt;       <span class="o">[</span> ! -d <span class="k">$(</span>OUTPUTDIR<span class="k">)</span> <span class="o">]</span> <span class="o">||</span> find <span class="k">$(</span>OUTPUTDIR<span class="k">)</span> -mindepth 1 -delete
+</pre></div>
+
+
+<h5>Footnote</h5>
+<p>If you're like me and seldom use <code>find</code>, the syntax and
+switches are a pain to get your head around each time. So while it's
+fresh:</p>
+<div class="highlight"><pre>find <span class="k">$(</span>OUTPUTDIR<span class="k">)</span> -mindepth 1 -maxdepth 1
+</pre></div>
+
+
+<p>Descend only one level into output directory, do not include the
+output directory itself. Now with these files...</p>
+<div class="highlight"><pre>-wholename <span class="k">$(</span>OUTPUTDIR<span class="k">)</span>/.git
+</pre></div>
+
+
+<p>Match file whose whole name matches expression and print (printing is
+implicit)</p>
+<div class="highlight"><pre>-o -exec rm -r <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
+</pre></div>
+
+
+<p>Or/Otherwise remove file/directory.</p>
+  </div><!-- /.entry-content -->
+  <footer>
+    </footer> 
+</section>
+
+<footer class="body">
+  Hosted on <a href="http://github.com/">GitHub</a>, powered by
+  <a href="http://getpelican.com/">Pelican</a>.
+</footer>
+
+</body>
+</html>
