@@ -5,9 +5,9 @@ Title: About
 I often find I use the About pages of others to appraise the content
 of their posts, so for those of us who like to judge: Martin. Science
 graduate, honours in statistics.
-Currently at
+Currently at the
 [Bureau of Resources and Energy Economics](http://www.bree.gov.au).
-Previously at
+Previously at the
 [Institute of Sustainable Futures](http://www.isf.uts.edu.au).
 
 Email: [my github handle] at gmail.com
