@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = u'm'
 SITENAME = u':testSite'
 SITESUBTITLE = u'a work in progress'
-SITEURL = u'/'
+SITEURL = u''
 TIMEZONE = u'Australia/Sydney'
 DEFAULT_LANG = u'en'
 
