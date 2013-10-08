@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>:testSite</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="http://mngu2382.github.io/theme/css/main.css"/>
+  <link rel="icon" type="image/x-icon" href="http://mngu2382.github.io/favicon.ico"/>
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      styles: {".MathJax .mo, .MathJax .mi": {
+        color: "black ! important"}}},
+    tex2jax: {
+      inlineMath: [["$","$"], ["\\(","\\)"]], processEscapes: true}
+  })
+</script>
+
+<script type="text/javascript" src=http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML></script>
+</head>
+
+<body>
+<header id="banner">
+  <h1><a href="http://mngu2382.github.io/index.html">:testSite <strong>a work in progress</strong></a></h1>
+  <nav><ul>
+          <li ><a href="/pages/gh-pages.html">gh-pages</a></li>
+          <li ><a href="/pages/about.html">About</a></li>
+      </ul></nav><!-- /#menu -->
+</header><!-- /#banner -->
+
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">Lat-Lng, World and Pixel Coordinates in Google Maps</h2>
+        
+  </header>
+  <footer class="post-info">
+    <abbr class="published" title="2013-10-04T00:00:00">
+      Fri 04 October 2013
+    </abbr>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>A summary of the different coordinate systems that the Google Maps API
+uses as explained in the
+<a href="https://developers.google.com/maps/documentation/javascript/maptypes#MapCoordinates">documentation</a>
+and demonstrated in an
+<a href="https://developers.google.com/maps/documentation/javascript/examples/map-coordinates">example</a>.</p>
+<h4>The short of it</h4>
+<p>From the <a href="http://en.wikipedia.org/wiki/World_Geodetic_System">WGS84</a>
+lat-lng pair, the
+<a href="http://en.wikipedia.org/wiki/Mercator_projection">Mercator projection</a>
+is used to place the point in a square with sides of 256 units. Points
+in this space are called the world coordinates.</p>
+<p>For a given zoom level (between 0 and 21, inclusive), the world
+coordinates are mapped to the pixel coordinates using the following
+formula</p>
+<div class="highlight"><pre><span class="n">pixelCoordinate</span> <span class="p">=</span> <span class="n">worldCoordinate</span> <span class="o">*</span> 2 ^ <span class="n">zoomLevel</span>
+</pre></div>
+
+
+<p>That is, from a square with sides of 256 units, the map is scaled up
+to a square with sides of <code>256 * 2 ^ zoomLevel</code> units. As the name
+suggests, these units are pixels and the coordinates refer to the
+position of the pixel on the map.</p>
+<h4>From lat-lng to world coordinates</h4>
+<p>To transform lat-lng to world coordinates (using the Mercator
+projection) we use the following formulae:</p>
+<p>$$
+\begin{align}
+x &amp;= 128(1 + \lambda/\pi)\\
+y &amp;= 128\left(1 - \frac{1}{2\pi}
+\log\left(\frac{1 + \sin\varphi}{1 - \sin\varphi}\right)\right)
+\end{align}
+$$</p>
+<p>where $-\pi/2\le\varphi\lt\pi/2$ is the latitude in radians and
+$-\pi\le\lambda\lt\pi$ is the longitude in radians.</p>
+<p>Note that this transformation places the $(\varphi,\lambda)$ lat-lng
+pair of (0, 0) at (128.0, 128.0) in the world coordinates. The map has
+an equitorial circumference of 256 units and, hence, a radius of
+$256/2\pi$.</p>
+<p><img alt="Lat-lng and Google Map's world coordinates" src="/static/images/world-zoom00-adj.png" /></p>
+<p><em>The R code for this plot can be found on <a href="TODO">GitHub</a>.</em></p>
+<h4>From world to pixel coordinates</h4>
+<p>As mentioned above, pixel coorindates are the world coordinates scaled
+up to fit a square map with sides of <code>256 * 2 ^ zoomLevel</code> pixels.
+Pixel coordinates are rounded to the nearest integer, since they need
+to refer to actual pixel positions.</p>
+<h4>Tiles</h4>
+<p>Google static maps are stored in 256 by 256 pixel parts called tiles.
+At a zoom level of 0 the whole world is made up of a single tile; at a
+zoom level of 1, the world whole is made up of 4 tiles arranged in a 2
+by 2 grid; at a zoom level of 2, there are 16 grids arrange 4 by 4; and
+so on.</p>
+<p>This struture provides an alternate way of expressing pixel coordinates
+for a given zoom level. Pixel coordinates can be denoted by a pair of
+coordinates: the first specifing the tile we're in, and the second, the
+pixel position within the tile.</p>
+  </div><!-- /.entry-content -->
+  <footer>
+    </footer> 
+</section>
+
+<footer class="body">
+  Hosted on <a href="http://github.com/">GitHub</a>, powered by
+  <a href="http://getpelican.com/">Pelican</a>.
+</footer>
+
+</body>
+</html>
