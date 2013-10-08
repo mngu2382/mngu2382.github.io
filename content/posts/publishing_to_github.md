@@ -1,6 +1,6 @@
 title: Publishing my Pelican site to GitHub
 date: 2013-09-19
-slug: pub_2_github
+slug: publishing-to-github
 
 The suggested method in the
 [documentation](http://docs.getpelican.com/en/latest/tips.html#publishing-to-github)
