@@ -135,14 +135,8 @@ footer, .post-info {
 	padding: 1.5em 0 1.1em 0;
 }
 
-.entry-title {
-    float: left;
-    margin: 0.5em 0;
-    padding: 0;
-}
-.post-info {
-    float: right;
-    margin: 0;
+.entry-title, .post-info {
+    margin: 0 0 0.2em;
     padding: 0;
 }
 
