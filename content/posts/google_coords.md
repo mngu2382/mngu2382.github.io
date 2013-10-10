@@ -55,7 +55,8 @@ $256/2\pi$.
 
 ![Lat-lng and Google Map's world coordinates](/static/images/world-zoom00-adj.png)
 
-_The R code for this plot can be found on [GitHub](TODO)._
+_The R code for this plot can be found on
+[GitHub](https://github.com/mngu2382/mngu2382.github.io/blob/src/extra/google-coords/00-maps.R)._
 #### From world to pixel coordinates
 As mentioned above, pixel coorindates are the world coordinates scaled
 up to fit a square map with sides of `256 * 2 ^ zoomLevel` pixels.

@@ -23,14 +23,13 @@ map00_t[,, 4] <- 0.6
 
 png("./world-zoom00-adj.png", width=630, height=630, res=96)
 par(mar=c(3, 3, 3, 3), mgp=c(1.6, 0.5, 0), cex.axis=0.7)
-plot(0:255,0:255, type="n", xlim=c(-2, 257), ylim=c(-2,257),
-     xaxs="i", yaxs="i", xlab="Longitude (degrees)",
-     ylab="World Coordinates, y (units)", col.lab="#dd3322",
-     axes=F)
+plot(-2:257,-2:257, type="n", xaxs="i", yaxs="i",
+     xlab="Longitude (degrees)", ylab="World Coordinates, y (units)",
+     col.lab="#dd3322", axes=F)
 rasterImage(map00_t, 0, 0, 255, 255, interpolate=F)
 axis(1, lng2x(seq(-180, 180, by=60)), seq(180, -180, by=-60))
-axis(2, seq(255, 0, by=-50), seq(0, 255, by=50))
-axis(3, seq(0, 255, by=50), seq(0, 255, by=50))
+axis(2, seq(255, -1, by=-64), seq(0, 256, by=64))
+axis(3, seq(0, 256, by=64), seq(0, 256, by=64))
 axis(4, lat2y(seq(-80, 80, by=20)), seq(80, -80, by=-20))
 mtext("World Coordinates, x (units)", 3, line=1.8, col="#dd3322")
 mtext("Latitude (degrees)", 4, line=1.8, col="#dd3322")
