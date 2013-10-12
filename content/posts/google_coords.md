@@ -3,10 +3,10 @@ Date: 2013-10-11
 slug: google-coords
 mathjax: true
 summary: A summary of the different coordinate systems that the Google
-         Maps API uses as explained in the
-         [documentation](https://developers.google.com/maps/documentation/javascript/maptypes#MapCoordinates)
-         and demonstrated in an
-         [example](https://developers.google.com/maps/documentation/javascript/examples/map-coordinates).
+    Maps API uses as explained in the
+    [documentation](https://developers.google.com/maps/documentation/javascript/maptypes#MapCoordinates)
+    and demonstrated in an
+    [example](https://developers.google.com/maps/documentation/javascript/examples/map-coordinates).
 
 
 A summary of the different coordinate systems that the Google Maps API

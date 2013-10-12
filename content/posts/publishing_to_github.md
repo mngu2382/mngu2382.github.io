@@ -1,6 +1,12 @@
 title: Publishing my Pelican site to GitHub
 date: 2013-09-19
 slug: publishing-to-github
+summary: The suggested method in the
+    [documentation](http://docs.getpelican.com/en/latest/tips.html#publishing-to-github)
+    for publishing Pelican sites to GitHub is through the
+    [ghp-import](https://github.com/davisp/ghp-import) package. But since
+    I'm ever stingy with the number of packages that I install, I use a
+    simple work-around.
 
 The suggested method in the
 [documentation](http://docs.getpelican.com/en/latest/tips.html#publishing-to-github)
