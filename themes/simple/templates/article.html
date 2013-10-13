@@ -15,12 +15,12 @@
     {% import 'translations.html' as translations with context %}
     {{ translations.translations_for(article) }}
   </header>
-  <footer class="post-info">
+  <aside class="post-info">
     <abbr class="published" title="{{ article.date.isoformat() }}">
       {{ article.locale_date }}
     </abbr>
-  </footer><!-- /.post-info -->
-  <div class="entry-content">
+  </aside><!-- /.post-info -->
+  <div>
     {{ article.content }}
   </div><!-- /.entry-content -->
   <footer>
