@@ -27,7 +27,7 @@ plot(-2:257,-2:257, type="n", xaxs="i", yaxs="i",
      xlab="Longitude (degrees)", ylab="World Coordinates, y (units)",
      col.lab="#dd3322", axes=F)
 rasterImage(map00_t, 0, 0, 255, 255, interpolate=F)
-axis(1, lng2x(seq(-180, 180, by=60)), seq(180, -180, by=-60))
+axis(1, lng2x(seq(-180, 180, by=60)), seq(-180, 180, by=60))
 axis(2, seq(255, -1, by=-64), seq(0, 256, by=64))
 axis(3, seq(0, 256, by=64), seq(0, 256, by=64))
 axis(4, lat2y(seq(-80, 80, by=20)), seq(80, -80, by=-20))
