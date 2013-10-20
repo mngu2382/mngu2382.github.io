@@ -2,7 +2,8 @@ title: Spatial data classes for R and the `sp` package
 date: 2013-09-10
 slug: sp_package
 status: draft
-summary: Notes I made when I wanted to plot a shapefile to make a map of the northern suburbs of Canberra ([here](/TODO)).
+summary: Notes I made when I wanted to plot a shapefile to make a map
+    of the northern suburbs of Canberra ([here](/TODO)).
 
 Notes I made when I wanted to plot a shapefile to make a map of the
 northern suburbs of Canberra ([here](/TODO)).

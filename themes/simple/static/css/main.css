@@ -122,7 +122,7 @@ em {
 	text-shadow: none !important;
 }
 
-footer, .post-info {
+footer, .post-info, .post-info1 {
     font-size: 0.8em;
     color: #333;
 }
@@ -137,7 +137,7 @@ footer {
     margin: 0.8em 0 1em 0;
 }
 
-.entry-title, .post-info {
+.entry-title, .post-info, .post-info1 {
     margin: 0;
     padding: 0;
 }
@@ -145,6 +145,10 @@ footer {
 .post-info {
     margin-bottom: 0.2em;
     padding-left: 15px;
+}
+
+.post-info1 {
+    margin-bottom: 0.5em;
 }
 
 .entry-title h5 {
@@ -220,8 +224,7 @@ pre code {
 
 img {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0.2em auto;
     max-width: 100%;
     height: auto;
     width: auto;
