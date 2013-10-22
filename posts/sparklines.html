@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>:testSite</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="http://mngu2382.github.io/theme/css/main.css"/>
+  <link rel="icon" type="image/x-icon" href="http://mngu2382.github.io/favicon.ico"/>
+
+</head>
+
+<body>
+<header id="banner">
+  <h1><a href="http://mngu2382.github.io/index.html">:testSite <strong>a work in progress</strong></a></h1>
+  <nav><ul>
+          <li ><a href="/pages/gh-pages.html">gh-pages</a></li>
+          <li ><a href="/pages/about.html">About</a></li>
+      </ul></nav><!-- /#menu -->
+</header><!-- /#banner -->
+
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">Sparklines</h2>
+        
+  </header>
+  <aside class="post-info1">
+    <abbr class="published" title="2013-10-22T00:00:00">
+      Tue 22 October 2013
+    </abbr>
+  </aside><!-- /.post-info -->
+  <div>
+    <p><em>R code for this post on
+<a href="https://github.com/mngu2382/mngu2382.github.io/blob/src/extra/sparklines/sparklines.R">Github</a>.</em></p>
+<p>Inspired by Tufte's
+<a href="http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001OR">sparklines</a>
+I prototyped the following data visualisation at work today. A
+definition of sparklines given by Tutfe:</p>
+<blockquote>
+<p>A sparkline is a small intense, simple, word-sized graphic with
+typographic resolution. Sparklines mean that graphics are no
+longer cartoonish special occasions with captions and boxes, but
+rather sparkline graphic can be everywhere a word or number can
+be: embedded in a sentence, table, headline, map, spreadsheet,
+graphic.</p>
+</blockquote>
+<p>The <a href="http://cran.r-project.org/web/packages/YaleToolkit/">Yale Toolkit</a>
+on CRAN provides an implementaion of sparklines, but since it is not
+easy for me to retrive and install packages at work, I thought I'd roll
+my own. Although not quite word-size ...</p>
+<p><img alt="Market report sparklines" src="/static/images/sparklines.png" title="Market report sparklines" /></p>
+<p><em>pdf version also on
+<a href="https://github.com/mngu2382/mngu2382.github.io/blob/src/extra/sparklines/sparklines.pdf">Github</a>.</em></p>
+<p>The last element that was add to the graphic was the gray background
+on the  plots which made an enormous amount of difference, surprising
+the crap out of me. I knew it would make a difference -- helping to
+visually group elements and graph reading in general (&agrave; la
+ggplot, which cites the advice of Tufte, Brewer and Carr) -- but the
+improvement still surprised.</p>
+<p><strong>NB</strong>: The data from work has been replaced with publically available
+series from the <a href="http://www.rba.gov.au/statistics/by-subject.html">RBA</a>
+and <a href="http://www.indexmundi.com/commodities/">IndexMundi</a>.</p>
+<h5>Reference</h5>
+<ul>
+<li>H. Wickham. <em>ggplot2: elegant graphics for data analysis</em>. Springer
+  New York, 2009. 8.1.1 Built-in themes.</li>
+</ul>
+  </div><!-- /.entry-content -->
+  <footer>
+    </footer> 
+</section>
+
+<footer class="body">
+  Hosted on <a href="http://github.com/">GitHub</a>, powered by
+  <a href="http://getpelican.com/">Pelican</a>.
+</footer>
+
+</body>
+</html>
