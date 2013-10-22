@@ -28,9 +28,7 @@
     </abbr>
   </aside><!-- /.post-info -->
   <div>
-    <p><em>R code for this post on
-<a href="https://github.com/mngu2382/mngu2382.github.io/blob/src/extra/sparklines/sparklines.R">Github</a>.</em></p>
-<p>Inspired by Tufte's
+    <p>Inspired by Tufte's
 <a href="http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001OR">sparklines</a>
 I prototyped the following data visualisation at work today. A
 definition of sparklines given by Tutfe:</p>
@@ -47,8 +45,10 @@ on CRAN provides an implementaion of sparklines, but since it is not
 easy for me to retrive and install packages at work, I thought I'd roll
 my own. Although not quite word-size ...</p>
 <p><img alt="Market report sparklines" src="/static/images/sparklines.png" title="Market report sparklines" /></p>
-<p><em>pdf version also on
-<a href="https://github.com/mngu2382/mngu2382.github.io/blob/src/extra/sparklines/sparklines.pdf">Github</a>.</em></p>
+<p><em>R code for this image on
+<a href="https://github.com/mngu2382/mngu2382.github.io/blob/src/extra/sparklines/sparklines.R">Github</a>. A
+<a href="/static/images/sparklines.pdf">pdf</a> version of the image is also
+available.</em></p>
 <p>The last element that was add to the graphic was the gray background
 on the  plots which made an enormous amount of difference, surprising
 the crap out of me. I knew it would make a difference -- helping to
@@ -58,6 +58,74 @@ improvement still surprised.</p>
 <p><strong>NB</strong>: The data from work has been replaced with publically available
 series from the <a href="http://www.rba.gov.au/statistics/by-subject.html">RBA</a>
 and <a href="http://www.indexmundi.com/commodities/">IndexMundi</a>.</p>
+<p>For the rest of this post I will walk through some of the corners of
+R the I learnt while trying to figure this one out. <em>Complete R code
+for the examples on
+<a href="https://github.com/mngu2382/mngu2382.github.io/blob/src/extra/sparklines/examples.R">Github</a>.</em></p>
+<h5>The layout function</h5>
+<p>The
+<a href="http://stat.ethz.ch/R-manual/R-devel/library/graphics/html/layout.html">layout</a>
+function is a way to divide the graphics device up in a
+manner similar, yet more flexibly that the <code>mfrow</code>/<code>mfcol</code> properties
+in <code>par</code>. For example the following two code chunks produce equivalent
+outputs:</p>
+<div class="highlight"><pre><span class="c1"># default par values</span>
+opar <span class="o">&lt;-</span> par<span class="p">(</span>no.readonly<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
+
+<span class="c1"># Firstly an mfrow example</span>
+<span class="c1"># use mfcol if you want to fill by column</span>
+par<span class="p">(</span>mfcol<span class="o">=</span>c<span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span> mar<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+<span class="kr">for</span> <span class="p">(</span>i in <span class="m">1</span>:<span class="m">4</span><span class="p">)</span> <span class="p">{</span>
+    plot<span class="p">(</span><span class="m">1</span><span class="p">,</span> type<span class="o">=</span><span class="s">&quot;n&quot;</span><span class="p">,</span> axes<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+    text<span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> i<span class="p">)</span>
+    box<span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c1"># revert to original par values</span>
+par<span class="p">(</span>opar<span class="p">)</span>
+
+<span class="c1"># Equivalent layout example</span>
+<span class="c1"># use byrow=F if you want to fill by column</span>
+layout<span class="p">(</span>matrix<span class="p">(</span><span class="m">1</span>:<span class="m">4</span><span class="p">,</span> nrow<span class="o">=</span><span class="m">2</span><span class="p">,</span> byrow<span class="o">=</span><span class="k-Variable">T</span><span class="p">))</span>
+par<span class="p">(</span>mar<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">))</span>
+<span class="kr">for</span> <span class="p">(</span>i in <span class="m">1</span>:<span class="m">4</span><span class="p">)</span> <span class="p">{</span>
+    plot<span class="p">(</span><span class="m">1</span><span class="p">,</span> type<span class="o">=</span><span class="s">&quot;n&quot;</span><span class="p">,</span> axes<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+    text<span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> i<span class="p">)</span>
+    box<span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><img alt="Layout example 1" src="/static/images/sparklines_example1.png" title="Using layout to achieve the same result as mfrow/mfcol" /></p>
+<p>With layout, figures can also be relatively sized and cells merged:</p>
+<div class="highlight"><pre><span class="c1"># Layout with varying sizes, can similarly adjust the height</span>
+layout<span class="p">(</span>matrix<span class="p">(</span><span class="m">1</span>:<span class="m">4</span><span class="p">,</span> nrow<span class="o">=</span><span class="m">2</span><span class="p">,</span> byrow<span class="o">=</span><span class="k-Variable">T</span><span class="p">),</span> width<span class="o">=</span>c<span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">))</span>
+par<span class="p">(</span>mar<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">))</span>
+<span class="kr">for</span> <span class="p">(</span>i in <span class="m">1</span>:<span class="m">4</span><span class="p">)</span> <span class="p">{</span>
+    plot<span class="p">(</span><span class="m">1</span><span class="p">,</span> type<span class="o">=</span><span class="s">&quot;n&quot;</span><span class="p">,</span> axes<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+    text<span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> i<span class="p">)</span>
+    box<span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><img alt="Layout example 2" src="/static/images/sparklines_example2.png" title="Layout with resized figures" /></p>
+<div class="highlight"><pre>layout<span class="p">(</span>matrix<span class="p">(</span>c<span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span>
+                <span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">),</span> nrow<span class="o">=</span><span class="m">2</span><span class="p">,</span> byrow<span class="o">=</span><span class="k-Variable">T</span><span class="p">),</span> width<span class="o">=</span>c<span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">))</span>
+<span class="kr">for</span> <span class="p">(</span>i in <span class="m">1</span>:<span class="m">4</span><span class="p">)</span> <span class="p">{</span>
+    plot<span class="p">(</span><span class="m">1</span><span class="p">,</span> type<span class="o">=</span><span class="s">&quot;n&quot;</span><span class="p">,</span> axes<span class="o">=</span><span class="k-Variable">F</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+    text<span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> i<span class="p">)</span>
+    box<span class="p">()</span>
+<span class="p">}</span>
+
+par<span class="p">(</span>opar<span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Layout example 3" src="/static/images/sparklines_example3.png" title="Layout with merged cells" /></p>
+<p>For the market report, I've simply used a 8  by 3 grid layout:
+<img alt="Layout example 4" src="/static/images/sparklines_example4.png" title="Layout used in market report" /></p>
+<h5>R graphics coordinate systems and grconvertX/grconvertY</h5>
 <h5>Reference</h5>
 <ul>
 <li>H. Wickham. <em>ggplot2: elegant graphics for data analysis</em>. Springer
