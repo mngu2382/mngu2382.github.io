@@ -1,6 +1,7 @@
 dat <- read.table("./data.csv", header=T ,sep=",",
                   colClasses="character")
-dat$Date <- as.Date(paste(substr(dat$Date, 1, 8), "01", sep=""))
+substr(dat$Date, 1, 2) <- "01"
+dat$Date <- as.Date(dat$Date, "%d/%m/%Y")
 dat[,-1] <- sapply(dat[,-1], as.numeric)
 
 pltdat <- subset(dat, Date > "2011-09-01" & Date < "2013-10-01")
@@ -59,7 +60,7 @@ sparkline <- function(date, series,
 ####
 ## Start Plot
 ####
-pdf("test_test.pdf", height=3.5, width=9)
+pdf("sparklines.pdf", height=3.5, width=9)
 layout(matrix(1:24, nrow=8, byrow=F))
 
 # main title
@@ -79,9 +80,9 @@ mtext("Exchange Rate", 1, -1, adj=0, cex=1)
 
 sparkline(pltdat$Date, pltdat$TWI, "TWI",
           mincol="#AA6611", maxcol="#008877", curcol=1)
-sparkline(pltdat$Date, pltdat$AUDUSD, "AUD/USD",
+sparkline(pltdat$Date, pltdat$AUDUSD, "USD/AUD",
           mincol="#AA6611", maxcol="#008877", curcol=1)
-sparkline(pltdat$Date, pltdat$AUDYEN, "AUD/YEN",
+sparkline(pltdat$Date, pltdat$AUDYEN, "YEN/AUD",
           mincol="#AA6611", maxcol="#008877", curcol=1)
 
 # Crude
@@ -153,3 +154,6 @@ dev.off()
 # ab <- "90d Bank Bill"
 # incol="#AA6611"; maxcol="#008877"; curcol=1
 # parkline(date, series, lab)
+
+## TODO:
+#  - sparklines to handle dataframes
