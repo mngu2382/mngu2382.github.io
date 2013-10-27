@@ -241,8 +241,8 @@ th, td {
 }
 
 ol, ul {
-    list-style-position: inside;
-    margin-left: 10px;
+    list-style-position: outside;
+    margin-left: 20px;
 }
 ol {
     list-style-type: decimal;
