@@ -21,9 +21,9 @@ sparkline <- function(date, series,
     date <- sort(date)
 
     maxval <- max(series, na.rm=T)
-    maxdate <- max(date[!is.na(series) & series==max(series, na.rm=T)])
+    maxdate <- max(date[!is.na(series) & series==maxval)
     minval <- min(series, na.rm=T)
-    mindate <- max(date[!is.na(series) & series==min(series, na.rm=T)])
+    mindate <- max(date[!is.na(series) & series==minval)
     curval <- tail(series, 1)
     curdate <- tail(date, 1)
 
