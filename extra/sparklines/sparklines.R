@@ -21,9 +21,9 @@ sparkline <- function(date, series,
     date <- sort(date)
 
     maxval <- max(series, na.rm=T)
-    maxdate <- max(date[!is.na(series) & series==maxval)
+    maxdate <- max(date[!is.na(series) & series==maxval])
     minval <- min(series, na.rm=T)
-    mindate <- max(date[!is.na(series) & series==minval)
+    mindate <- max(date[!is.na(series) & series==minval])
     curval <- tail(series, 1)
     curdate <- tail(date, 1)
 
@@ -108,8 +108,8 @@ par(mar=c(0, 0, 0, 0) + 0.1)
 plot(0, 0, type="n", axes=F)
 mtext("Coal", 1, -1, adj=0, cex=1)
 
-sparkline(pltdat$Date, pltdat$HenHub, "Thermal Coal, Newcastle", units="US$/t",
-          mincol="#AA6611", maxcol="#008877", curcol=1)
+sparkline(pltdat$Date, pltdat$ThermCoalNew, "Thermal Coal, Newcastle",
+          units="US$/t", mincol="#AA6611", maxcol="#008877", curcol=1)
 
 # Gas
 par(mar=c(0, 0, 0, 0) + 0.1)
