@@ -6,8 +6,6 @@ summary: _Cat and Mouse_ is the second title in the _Danzig Triology_,
 
 <img style="margin-right:1em;max-width:40%;" alt="Cat and Mouse cover" src="/static/images/Front_cover_of_Penguin_1975_Reprint_of_Günter_Grass_novella_Cat_and_Mouse.jpg" align="left"/>
 
-_Apologies reader: this is pathetic, needs a rewrite._
-
 _Cat and Mouse_ is the second title in the _Danzig Triology_, and my
 first, by G&uuml;nter Grass.
 
