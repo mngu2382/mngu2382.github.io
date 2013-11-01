@@ -43,32 +43,33 @@ graphic.</p>
 <p>The <a href="http://cran.r-project.org/web/packages/YaleToolkit/">Yale Toolkit</a>
 on CRAN provides an implementaion of sparklines, but since it is not
 easy for me to retrive and install packages at work, I thought I'd roll
-my own. Although not quite word-size ...</p>
+my own (thanks to KM for the discussion on some of the visual aspects).
+Although not quite word-size ...</p>
 <p><img alt="Market report sparklines" src="/static/images/sparklines.png" title="Market report sparklines" /></p>
 <p><em>R code for this image on
 <a href="https://github.com/mngu2382/mngu2382.github.io/blob/src/extra/sparklines/sparklines.R">Github</a>. A
 <a href="/static/images/sparklines.pdf">pdf</a> version of the image is also
 available.</em></p>
+<p><strong>NB</strong>: The data from work has been replaced with publically available
+series from the <a href="http://www.rba.gov.au/statistics/by-subject.html">RBA</a>
+and <a href="http://www.indexmundi.com/commodities/">IndexMundi</a>.</p>
 <p>The last element that was add to the graphic was the gray background
 on the  plots which made an enormous amount of difference, surprising
 the crap out of me. I knew it would make a difference -- helping to
 visually group elements and graph reading in general (&agrave; la
-ggplot, which cites the advice of Tufte, Brewer and Carr) -- but the
-improvement still surprised.</p>
-<p><strong>NB</strong>: The data from work has been replaced with publically available
-series from the <a href="http://www.rba.gov.au/statistics/by-subject.html">RBA</a>
-and <a href="http://www.indexmundi.com/commodities/">IndexMundi</a>.</p>
+ggplot, which cites the advice of Tufte, Brewer and Carr
+<a href="#ref1">[1]</a>) -- but the improvement still surprised.</p>
 <p>For the rest of this post I will walk through some of the corners of
 R the I learnt while trying to figure this one out. <em>Complete R code
 for the examples on
 <a href="https://github.com/mngu2382/mngu2382.github.io/blob/src/extra/sparklines/examples.R">Github</a>.</em></p>
-<h5>The layout function</h5>
+<h4>The layout function</h4>
 <p>The
 <a href="http://stat.ethz.ch/R-manual/R-devel/library/graphics/html/layout.html">layout</a>
 function is a way to divide the graphics device up in a
-manner similar, yet more flexibly that the <code>mfrow</code>/<code>mfcol</code> properties
-in <code>par</code>. For example the following two code chunks produce equivalent
-outputs:</p>
+manner similar to, yet more flexibly than, the <code>mfrow</code>/<code>mfcol</code>
+properties in <code>par</code>. For example the following two code chunks produce
+equivalent outputs:</p>
 <div class="highlight"><pre><span class="c1"># default par values</span>
 opar <span class="o">&lt;-</span> par<span class="p">(</span>no.readonly<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
 
@@ -125,12 +126,14 @@ par<span class="p">(</span>opar<span class="p">)</span>
 <p><img alt="Layout example 3" src="/static/images/sparklines_example3.png" title="Layout with merged cells" /></p>
 <p>For the market report, I've simply used a 8  by 3 grid layout:
 <img alt="Layout example 4" src="/static/images/sparklines_example4.png" title="Layout used in market report" /></p>
-<h5>R graphics coordinate systems and grconvertX/grconvertY</h5>
-<h5>Reference</h5>
-<ul>
-<li>H. Wickham. <em>ggplot2: elegant graphics for data analysis</em>. Springer
-  New York, 2009. 8.1.1 Built-in themes.</li>
-</ul>
+<h4>R graphics coordinate systems and grconvertX/grconvertY</h4>
+<p>The <a href="http://stat.ethz.ch/R-manual/R-devel/library/graphics/html/convertXY.html">grconvertX/grconvertY</a>
+functions convert between the different graphic coordinate system in
+R.</p>
+<h4>Reference</h4>
+<p><a name="ref1"> </a>
+[1] H. Wickham. <em>ggplot2: elegant graphics for data analysis</em>. Springer
+New York, 2009. 8.1.1 Built-in themes.</p>
   </div><!-- /.entry-content -->
   <footer>
     </footer> 
