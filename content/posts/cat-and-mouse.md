@@ -27,9 +27,9 @@ his relationship with Mahlke. He is setting the background to the
 moral dilemma that his is faced with at the end of the story: Mahlke
 has gone AWOL and has asked Pilenz to hide him.
 
-Pilnez, as narrator, is often contradictory and uncertain (he cannot
-even make up his mind as to whether he was Mahlke's friend or not),
-but I suppose that we are to understand that to be a symptom of the
+Pilnez, as narrator, is often contradictory and uncertain -- he cannot
+even make up his mind as to whether he was Mahlke's friend or not. But
+I suppose we are to understand that to be a symptom of the
 difficulty he is having trying to determine how much responsibility
 he must/can/would shoulder for the disappearance of Mahlke.
 
