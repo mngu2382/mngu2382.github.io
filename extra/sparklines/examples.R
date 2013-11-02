@@ -1,4 +1,4 @@
-## layout
+## layout examples
 
 # default par values
 opar <- par(no.readonly=T)
@@ -53,3 +53,31 @@ for (i in 1:24) {
 
 par(opar)
 
+
+## Graphics Coordinate Systems
+par(oma=c(3, 0, 0, 0), mar=c(4, 3, 3, 1) + 0.1, cex=0.8)
+plot(1:10, type="n", xlab="", ylab="")
+box("plot", lty=1)
+box("figure", lty=2)
+box("outer", lty=3)
+mtext(c("Device/Outer", "Figure/Inner", "Plot"),
+      1, line=c(6.1, 3.1, -1), cex=0.8)
+
+# centre of data
+points(5, 5, pch=19)
+text(5, 5, "user: (5, 5)", pos=4)
+
+# centre of plot area
+points(grconvertX(0.5, "npc"), grconvertY(0.5, "npc"), col=2, pch=19)
+text(grconvertX(0.5, "npc"), grconvertY(0.5, "npc"),
+     "npc: (0.5, 0.5)", pos=4, col=2)
+
+# centre of figure area
+points(grconvertX(0.5, "nfc"), grconvertY(0.5, "nfc"), col=3, pch=19)
+text(grconvertX(0.5, "nfc"), grconvertY(0.5, "nfc"),
+     "nfc: (0.5, 0.5)", pos=2, col=3)
+
+# centre of outer/device area
+points(grconvertX(0.5, "ndc"), grconvertY(0.5, "ndc"), col=4, pch=19)
+text(grconvertX(0.5, "ndc"), grconvertY(0.5, "ndc"),
+     "ndc: (0.5, 0.5)", pos=2, col=4)
