@@ -129,7 +129,48 @@ par<span class="p">(</span>opar<span class="p">)</span>
 <h4>R graphics coordinate systems and grconvertX/grconvertY</h4>
 <p>The <a href="http://stat.ethz.ch/R-manual/R-devel/library/graphics/html/convertXY.html">grconvertX/grconvertY</a>
 functions convert between the different graphic coordinate system in
-R.</p>
+R. The man page of grconvertX/grconvertY lists seven different
+coordinate system, the difference is in the units they use (e.g. the
+units of the data, inches, pixels, or a normalised value between 0 and
+1) and where the origin is placed (in the plot area, the figure area or
+the device area).</p>
+<p>In the following example we plot at the centres with respect to the
+data (<code>"user"</code> coordinates), the plot area (using the <code>"npc"</code>,
+<strong>n</strong>ormalised <strong>p</strong>lot <strong>c</strong>oordinates), the figure area (using the
+<code>"nfg"</code>, <strong>n</strong>ormalised <strong>f</strong>igure <strong>c</strong>ordinates) and the device area
+(using the <code>"ndc"</code>, <strong>n</strong>ormalised <strong>d</strong>evice <strong>c</strong>ordinates).</p>
+<div class="highlight"><pre>par<span class="p">(</span>oma<span class="o">=</span>c<span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span> mar<span class="o">=</span>c<span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span> <span class="o">+</span> <span class="m">0.1</span><span class="p">,</span> cex<span class="o">=</span><span class="m">0.8</span><span class="p">)</span>
+plot<span class="p">(</span><span class="m">1</span>:<span class="m">10</span><span class="p">,</span> type<span class="o">=</span><span class="s">&quot;n&quot;</span><span class="p">,</span> xlab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+box<span class="p">(</span><span class="s">&quot;plot&quot;</span><span class="p">,</span> lty<span class="o">=</span><span class="m">1</span><span class="p">)</span>
+box<span class="p">(</span><span class="s">&quot;figure&quot;</span><span class="p">,</span> lty<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+box<span class="p">(</span><span class="s">&quot;outer&quot;</span><span class="p">,</span> lty<span class="o">=</span><span class="m">3</span><span class="p">)</span>
+mtext<span class="p">(</span>c<span class="p">(</span><span class="s">&quot;Device/Outer&quot;</span><span class="p">,</span> <span class="s">&quot;Figure/Inner&quot;</span><span class="p">,</span> <span class="s">&quot;Plot&quot;</span><span class="p">),</span>
+      <span class="m">1</span><span class="p">,</span> line<span class="o">=</span>c<span class="p">(</span><span class="m">6.1</span><span class="p">,</span> <span class="m">3.1</span><span class="p">,</span> <span class="m">-1</span><span class="p">),</span> cex<span class="o">=</span><span class="m">0.8</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="grconvert example" src="/static/images/sparklines_example5.png" title="grconvert example" /></p>
+<div class="highlight"><pre><span class="c1"># centre of data</span>
+points<span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> pch<span class="o">=</span><span class="m">19</span><span class="p">)</span>
+text<span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="s">&quot;user: (5, 5)&quot;</span><span class="p">,</span> pos<span class="o">=</span><span class="m">4</span><span class="p">)</span>
+
+<span class="c1"># centre of plot area</span>
+points<span class="p">(</span>grconvertX<span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="s">&quot;npc&quot;</span><span class="p">),</span> grconvertY<span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="s">&quot;npc&quot;</span><span class="p">),</span> col<span class="o">=</span><span class="m">2</span><span class="p">,</span> pch<span class="o">=</span><span class="m">19</span><span class="p">)</span>
+text<span class="p">(</span>grconvertX<span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="s">&quot;npc&quot;</span><span class="p">),</span> grconvertY<span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="s">&quot;npc&quot;</span><span class="p">),</span>
+     <span class="s">&quot;npc: (0.5, 0.5)&quot;</span><span class="p">,</span> pos<span class="o">=</span><span class="m">4</span><span class="p">,</span> col<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+
+<span class="c1"># centre of figure area</span>
+points<span class="p">(</span>grconvertX<span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="s">&quot;nfc&quot;</span><span class="p">),</span> grconvertY<span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="s">&quot;nfc&quot;</span><span class="p">),</span> col<span class="o">=</span><span class="m">3</span><span class="p">,</span> pch<span class="o">=</span><span class="m">19</span><span class="p">)</span>
+text<span class="p">(</span>grconvertX<span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="s">&quot;nfc&quot;</span><span class="p">),</span> grconvertY<span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="s">&quot;nfc&quot;</span><span class="p">),</span>
+     <span class="s">&quot;nfc: (0.5, 0.5)&quot;</span><span class="p">,</span> pos<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="m">3</span><span class="p">)</span>
+
+<span class="c1"># centre of outer/device area</span>
+points<span class="p">(</span>grconvertX<span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="s">&quot;ndc&quot;</span><span class="p">),</span> grconvertY<span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="s">&quot;ndc&quot;</span><span class="p">),</span> col<span class="o">=</span><span class="m">4</span><span class="p">,</span> pch<span class="o">=</span><span class="m">19</span><span class="p">)</span>
+text<span class="p">(</span>grconvertX<span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="s">&quot;ndc&quot;</span><span class="p">),</span> grconvertY<span class="p">(</span><span class="m">0.5</span><span class="p">,</span> <span class="s">&quot;ndc&quot;</span><span class="p">),</span>
+     <span class="s">&quot;ndc: (0.5, 0.5)&quot;</span><span class="p">,</span> pos<span class="o">=</span><span class="m">2</span><span class="p">,</span> col<span class="o">=</span><span class="m">4</span><span class="p">)</span>
+</pre></div>
+
+
 <h4>Reference</h4>
 <p><a name="ref1"> </a>
 [1] H. Wickham. <em>ggplot2: elegant graphics for data analysis</em>. Springer
