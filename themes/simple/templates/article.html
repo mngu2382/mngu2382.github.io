@@ -2,11 +2,11 @@
 
 {% block head %}
 {{ super() }}
-{% block title %}{{ article.title }}{% endblock %}
 {% if article.mathjax %}
   {% include 'mathjax.html' %}
 {% endif %}
 {% endblock %}
+{% block title %}{{ article.title }}{% endblock %}
 
 {% block content %}
 <section id="content" class="body">
