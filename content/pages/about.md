@@ -1,13 +1,15 @@
 Title: About
 
-##### Much as I am loath to say anything about myself...
+Martin. Science graduate, statistics major.
 
-I often find I use the About pages of others to appraise the content
-of their posts, so for those of us who like to judge: Martin. Science
-graduate, honours in statistics.
-Currently at the
-[Bureau of Resources and Energy Economics](http://www.bree.gov.au).
-Previously at the
-[Institute of Sustainable Futures](http://www.isf.uts.edu.au).
+__Currently__: Research Assistant at the
+[Phenomics and Bioinformatics Research Centre, University of South Australia](http://www.unisa.edu.au/pbrc)
+
+__Previously__:
+
+- Data Analyst/Economist at the
+  [Bureau of Resources and Energy Economics](http://www.bree.gov.au)
+- Reseach Assitant at the
+  [Institute of Sustainable Futures, University of Technology Sydney](http://www.isf.uts.edu.au")
 
 Email: [my github handle] at gmail.com
