@@ -9,7 +9,7 @@ __Previously__:
 
 - Data Analyst/Economist at the
   [Bureau of Resources and Energy Economics](http://www.bree.gov.au)
-- Reseach Assitant at the
+- Research Assistant at the
   [Institute of Sustainable Futures, University of Technology Sydney](http://www.isf.uts.edu.au")
 
 Email: [my github handle] at gmail.com
