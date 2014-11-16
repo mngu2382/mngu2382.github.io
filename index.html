@@ -1,0 +1,12 @@
+---
+layout: page
+title: Posts
+---
+
+<ul>{% for post in site.posts %}
+  <li>
+    <h4><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
+    <span>{{ post.date | date: "%b %-d, %Y" }}</span><br>
+    {% if post.summary %}<span>{{ post.summary }}</span>{% endif %}
+  </li>{% endfor %}
+</ul>

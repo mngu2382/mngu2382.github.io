@@ -1,0 +1,7 @@
+# Site settings
+title: testSite
+baseurl: ""
+url: "http://mngu2382.github.io"
+permalink: none
+
+# Build settings

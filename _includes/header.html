@@ -1,0 +1,10 @@
+<header id="banner">
+  <a href="{{ site.baseurl }}/index.html">
+    <h1>:testSite </h1>
+    <h2> work in progress</h2>
+  </a>
+</header>
+{% assign pages = site.pages | sort:"weight"  %}
+<nav>
+    <ul>{% for p in pages %}{% if p.weight %}<li><a href="{{ p.url | prepend: site.baseurl }}">{{ p.title }}</a></li>{% endif %}{% endfor %}</ul>
+</nav>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sparklines</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+  <body>
+    <header id="banner">
+  <a href="/index.html">
+    <h1>:testSite </h1>
+    <h2> work in progress</h2>
+  </a>
+</header>
+
+<nav>
+    <ul><li><a href="/gh-pages.html">gh-pages</a></li><li><a href="/about.html">About</a></li></ul>
+</nav>
+
+    <section>
+      <h1>Sparklines</h1>
+<p>Oct 22, 2013</p>
+
+<article><p>Inspired by Tufte’s
+<a href="http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001OR">sparklines</a>
+I prototyped the following data visualisation at work today. A
+definition of sparklines given by Tutfe:</p>
+
+<blockquote>
+  <p>A sparkline is a small intense, simple, word-sized graphic with
+typographic resolution. Sparklines mean that graphics are no
+longer cartoonish special occasions with captions and boxes, but
+rather sparkline graphic can be everywhere a word or number can
+be: embedded in a sentence, table, headline, map, spreadsheet,
+graphic.</p>
+</blockquote>
+
+<p>The <a href="http://cran.r-project.org/web/packages/YaleToolkit/">Yale Toolkit</a>
+on CRAN provides an implementaion of sparklines, but since it is not
+easy for me to retrive and install packages at work, I thought I’d
+roll my own (thanks to KM for the discussion on some of the visual
+aspects). Although not quite word-size …</p>
+
+<p><img src="/images/sparklines.png" alt="Market report sparklines" title="Market report sparklines" /></p>
+
+<p><em>R code for this image on
+<a href="https://github.com/mngu2382/mngu2382.github.io/blob/src/extra/sparklines/sparklines.R">Github</a>. A
+<a href="/images/sparklines.pdf">pdf</a> version of the image is
+also available.</em></p>
+
+<p><strong>NB</strong>: The data from work has been replaced with publically available
+series from the <a href="http://www.rba.gov.au/statistics/by-subject.html">RBA</a>
+and <a href="http://www.indexmundi.com/commodities/">IndexMundi</a>.</p>
+
+<p>The last element that was add to the graphic was the gray background
+on the  plots which made an enormous amount of difference, surprising
+the crap out of me. I knew it would make a difference – helping to
+visually group elements and graph reading in general – but the
+improvement still surprised.</p>
+</article>
+
+    </section>
+    <footer>
+  <a href="https://creativecommons.org/licenses/by/3.0/deed.en_US" rel="license"><img src="http://i.creativecommons.org/l/by/3.0/80x15.png" style="border-width:0;display:inline" alt="Creative Commons License"></a> This work is licensed under a
+  <br>
+  <a href="https://creativecommons.org/licenses/by/3.0/deed.en_US" rel="license">Creative Commons Attribution 3.0 Unported License</a>.
+  <br>
+  Hosted on <a href="https://github.com/">GitHub</a>, powered by <a href="http://jekyllrb.com">Jekyll</a>.
+</footer>
+
+  </body>
+</html>

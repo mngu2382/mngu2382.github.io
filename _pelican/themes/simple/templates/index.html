@@ -8,7 +8,7 @@
 {% for article in articles_page.object_list if not article.hide %}
   <article class="hentry">
     <section class="entry-title">
-      <h5><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{% if article.category != "misc" %}[{{ article.category }}] {% endif %}{{ article.title }}</a></h5>
+      <h5><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h5>
     </section>
     <aside class="post-info">
       <abbr class="published" title="{{ article.date.isoformat() }}"> {{ article.locale_date }} </abbr>
