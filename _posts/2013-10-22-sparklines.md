@@ -27,9 +27,9 @@ aspects). Although not quite word-size ...
 ![Market report sparklines]({{ site.baseurl}}/images/sparklines.png "Market report sparklines")
 
 _R code for this image on
-[Github](https://github.com/mngu2382/mngu2382.github.io/blob/src/extra/sparklines/sparklines.R). A
-[pdf]({{ site.baseurl}}/images/sparklines.pdf) version of the image is
-also available._
+[Github](https://github.com/mngu2382/mngu2382.github.io/extra/sparklines/sparklines.R)
+and [pdf]({{ site.baseurl}}/images/sparklines.pdf) version of the image
+is also available._
 
 __NB__: The data from work has been replaced with publically available
 series from the [RBA](http://www.rba.gov.au/statistics/by-subject.html)
