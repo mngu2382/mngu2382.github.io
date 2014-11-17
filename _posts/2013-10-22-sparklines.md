@@ -27,7 +27,7 @@ aspects). Although not quite word-size ...
 ![Market report sparklines]({{ site.baseurl}}/images/sparklines.png "Market report sparklines")
 
 _R code for this image on
-[Github](https://github.com/mngu2382/mngu2382.github.io/extra/sparklines/sparklines.R)
+[Github](https://github.com/mngu2382/mngu2382.github.io/blob/master/extras/sparklines/sparklines.R)
 and [pdf]({{ site.baseurl}}/images/sparklines.pdf) version of the image
 is also available._
 
